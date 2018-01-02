@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "צור קשר";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    תל אביב-יפו<br />
+    חומה ומגדל 29 <br />
+   
+    054-5492634
+    <abbr title="פלאפון"><i class="material-icons">contact_phone</i></abbr>
+</address>
+
+<address>
+    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+  <!--========== FOOTER ==========-->
+<footer class="footer">
+    <!-- Links -->
+
+    <div class="content-lg container">
+        <div class="row">
+            <div class="col-sm-12">
+                <form action="/Home/ContactMessage">
+                    <div class="col-sm-4">
+                        <h2 class="color-white">צור קשר</h2>
+                        <input type="text" name="name" class="form-control footer-input margin-b-20" placeholder="שם" required>
+                        <input type="email" name="email" class="form-control footer-input margin-b-20" placeholder="דאו''ל" required>
+                        <input type="text" name="phone" class="form-control footer-input margin-b-20" placeholder="פלאפון" required>
+                        <textarea name="message" class="form-control footer-input margin-b-30" rows="6" placeholder="תוכן הפנייה" required></textarea>
+                        <button type="submit" class="btn-theme btn-theme-sm btn-base-bg text-uppercase">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!--// end row -->
+        </div>
+    </div>
+    <!-- End Links -->
+    <!-- Copyright -->
+    <div class="content container">
+        <div class="row">
+            <div class="col-xs-6">
+                <img class="footer-logo" src="~/Content/logo.png" alt="~/asentus Logo">
+            </div>
+            <div class="col-xs-6 text-right">
+                <p class="margin-b-0"><a class="color-base fweight-700" href="http://keenthemes.com/preview/asentus/">Asentus</a> Theme Powered by: <a class="color-base fweight-700" href="http://www.keenthemes.com/">KeenThemes.com</a></p>
+            </div>
+        </div>
+        <!--// end row -->
+    </div>
+    <!-- End Copyright -->
+</footer>
+<!--========== END FOOTER ==========-->

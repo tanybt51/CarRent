@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "התחברות למערכת";
+}
+<br />
+
+
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+
+            <img class="img-responsive" src="~/Content/login.jpg" alt="Slider Image">
+
+
+            @*<img class="img-responsive" src="~/Content/banner-image-1.jpg" alt="Slider Image">*@
+            <div class="container col-4 ya-font">
+                <div class="carousel-centered form-container" style="min-width:300px!important">
+                    <form class="" action="~/Login/Login" method="post">
+                        @Html.AntiForgeryToken()
+                        <div class="ya-error col-lg-6">@ViewBag.error</div>
+                        <div class="form-title">דואר אלקטרוני</div>
+                        <input class="form-field" value="@ViewBag.email" type="email" onblur="InvalidMail(this);" oninvalid="InvalidMail(this);" required placeholder="דוא''ל" id="inputEmail" title="שם משתמש" name="Email" />
+                        @*<input class="form-field" ng-model="modelEmail" value="@ViewBag.email" type="email" onblur="InvalidMail(this);" oninvalid="InvalidMail(this);" required placeholder="מייל" id="inputEmail" title="שם משתמש" name="email" /><div class="ya-error col-lg-6">@ViewBag.ErrorMail</div>*@
+                        <div class="form-title">סיסמה</div>
+                        <input class="form-field" type="password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword" placeholder="****" name="Password" />
+                        <div class=""><span class="ya-error">@ViewBag.ErrorPassword</span></div>
+
+
+                        <div class="submit-container">
+                            <input class="submit-button" type="submit" value="כניסה" />
+                        </div>
+
+                       
+                      
+                  
+
+
+                    </form>
+                    <form id="registerForm" action="/Login/Register" method="post" dir="ltr">
+                        @Html.AntiForgeryToken()
+                        <a class="form-field" href="javascript:document.getElementById('registerForm').submit()">הרשמה</a>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="container col-xs-12">
+
+
+
+
+
+
+</div>
+<br />
+<script>
+
+
+</script>
+
+@section scripts{
+    <style>
+        .form-field{
+            width:190px!important;
+        }
+    </style>
+
+    <link href="~/css/Login/Register.css" rel="stylesheet" />
+    <script src="~/Scripts/Jquery/Login/Validations/login.js"></script>
+
+
+
+}
+
+
+

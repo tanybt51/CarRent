@@ -1,0 +1,5 @@
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\4.Entities\bin\Debug\4.Entities.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\4.Entities\bin\Debug\4.Entities.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\4.Entities\obj\Debug\4.Entities.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\4.Entities\obj\Debug\4.Entities.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\4.Entities\obj\Debug\4.Entities.pdb

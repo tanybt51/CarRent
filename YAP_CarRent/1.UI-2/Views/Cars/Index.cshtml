@@ -1,0 +1,144 @@
+﻿@model _1.UI_2.Models.FindCarVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-app="carsApp" ng-controller="carsController">
+    <div class="container-full-width">
+        <!-- Wrapper for slides -->
+
+        <div>
+            <div class="col-12">
+                <img class="img-responsive ya-img" src="~/Content/jeep8eshort.jpg">
+                <div class="container ya-center">
+                    <div class="carousel-centered ya-top30">
+                        <h1 class="ya-car-search">{{title}}</h1>
+
+                        <ul class="ya-ul navbar-nav-right">
+
+
+                            <li class="nav-item">
+                                <h2>סניף</h2>
+                                <input type="search" data-id="33333" id="branchID" ng-change="changBranch()" ng-model="currentBranch" placeholder="בחר סניף" list="branchesList" />
+                            </li>
+                            <li class="nav-item">
+                                <h2>מתאריך</h2>
+                                <input type="date" ng-disabled="disable" ng-model="from" />
+                            </li>
+                            <li class="nav-item">
+                                <h2>עד תאריך</h2>
+                                <input type="date" ng-disabled="disable" ng-model="to" />
+                            </li>
+                            <li class="nav-item">
+                                <h2>קבוצת רכבים</h2>
+                                <input type="search" ng-disabled="disable" ng-model="currentGroup" placeholder="בחר קבוצה" list="groupList" />
+                            </li>
+
+                            <li class="nav-item">
+                                <h2>יצרן</h2>
+                                <input type="search" ng-disabled="disable" ng-model="currentManufacturer" placeholder="בחר יצרן" list="manufacturerList" />
+                            </li>
+                            <li class="nav-item">
+                                <h2>ממחיר</h2>
+                                <div><input type="number" ng-disabled="disable" ng-model="currentMin" placeholder="מינימום" /></div>
+                            </li>
+                            <li class="nav-item">
+                                <h2>עד מחיר</h2>
+                                <div><input type="number" ng-disabled="disable" ng-model="currentMax" placeholder="מקסימום" /></div>
+
+                            </li>
+                            <li class="nav-item">
+                                <div>  <button ng-click="cleanSearch()" class="btn btn-info">נקה חיפוש</button></div>
+                                <br />
+                                <div> <button ng-click="search()" ng-disabled="disable" class="btn btn-success">חפש</button></div>
+                            </li>
+
+
+
+                        </ul>
+                        <h2 class="right">{{searchText}}&nbsp;</h2>
+                        <ul class="nav men"></ul>
+                        <div class="col-md-2">
+
+
+                        </div>
+                        <datalist id="branchesList">
+                            @{foreach (var b in Model.Branches)
+                                {
+                                    <option id="@b.Text" data-id="@b.Value">@b.Text</option>
+                                } }
+
+                        </datalist>
+                        <datalist id="manufacturerList">
+                            @{foreach (var m in Model.Manufacturers)
+                                {
+                                    <option id="@m.Text" data-id="@m.Value">@m.Text</option>
+
+                                } }
+
+
+                        </datalist>
+                        <datalist id="modelsList">
+                            <option ng-repeat="m in modelList">{{m.Name}}</option>
+
+                        </datalist><datalist id="groupList">
+                            @{foreach (var g in Model.Groups)
+                                {
+                                    <option id="@g.Text" data-id="@g.Value">@g.Text</option>
+                                } }
+
+                        </datalist>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="" style="overflow:scroll; ">
+        <div class="container-full-width masonry-grid center-block">
+
+
+            <div ng-repeat="c in carsList">
+                <div class="masonry-grid-item col-md-6 ya-car-size" ng-click="order({{c.Serial}})">
+                    <!-- Work -->
+                    <div class="work wow fadeInUp" data-wow-duration=".3" data-wow-delay=".5s">
+                        <div class="work-overlay">
+                            <img class="full-width img-responsive" src="~/Content/Images/Cars/{{c.Image}}" alt="Portfolio Image">
+                        </div>
+                        <div class="work-content">
+                            <h3 class="color-white margin-b-5">{{c.Model}}</h3>
+                            <h3 class="color-white margin-b-5">{{c.Price | currency:"₪"}}</h3>
+                            <h3 class="color-white margin-b-5">{{c.Group}}</h3>
+                            <h3 class="color-white margin-b-5">הזמן עכשיו!</h3>
+
+                            <p class="color-white margin-b-0">Lorem ipsum dolor sit amet consectetur adipiscing</p>
+                        </div>
+
+                        <a class="content-wrapper-link" href="~/Orders/Order?_carNumber={{c.Serial}}"></a>
+                    </div>
+                    <!-- End Work -->
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+</div>
+
+
+@section scripts{
+    <!--Angular-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--App-->
+    <script src="~/Scripts/Angular/Cars/App/carsApp.js"></script>
+    <!--Controller-->
+    <script src="~/Scripts/Angular/Cars/App/Controllers/carsCntroller.js"></script>
+    <!--Services-->
+    <script src="~/Scripts/Angular/Cars/App/Services/carsService.js"></script>
+    <script src="~/Scripts/Angular/GlobleServices/Global.js"></script>
+    <!--App-->
+    <link href="~/css/Cars/Index.css" rel="stylesheet" />
+}

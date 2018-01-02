@@ -1,0 +1,11 @@
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\obj\Debug\2.BL.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\2.BL.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\2.BL.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\3.DAL.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\4.Entities.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\EntityFramework.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\3.DAL.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\4.Entities.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\bin\Debug\EntityFramework.xml
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\obj\Debug\2.BL.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\2.BL\obj\Debug\2.BL.pdb

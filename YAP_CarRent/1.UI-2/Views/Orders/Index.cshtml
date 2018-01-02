@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "הזמנות";
+}
+
+
+<div class="container" ng-app="ordersApp" ng-controller="ordersController">
+    <div class="col-12">
+        <img class="img-responsive ya-img" src="~/Content/jeep8eshort.jpg">
+      
+        <div class="container ya-center">
+            
+            <div class="carousel-centered ya-top30">
+                <h1 class="ya-car-search">{{title}}</h1>
+                @{if (User.IsInRole("Employee"))
+                {
+                    <input type="search" list="customersList" ng-change="changeUser()" ng-model="Email" />
+
+
+                    <datalist id="customersList">
+                        <option ng-repeat="u in users" value="{{u.Email}}">{{u.TZ}}</option>
+                    </datalist>
+                    }
+                    else
+                    { <input type="search" ng-change="changeUser()" ng-model="Email"/>
+                    <datalist id="customersList">
+                        <option ng-repeat="u in users" value="{{u.Email}}">{{u.TZ}}</option>
+                    </datalist>
+
+
+
+                    }
+                }
+                <span class="ya-car-search">{{currentUser.FirstName}}</span>&nbsp;&nbsp;&nbsp;
+                <span class="ya-car-search">{{currentUser.LastName}}</span>&nbsp;&nbsp;&nbsp;
+                <span class="ya-car-search">{{currentUser.Email}}</span>&nbsp;
+
+                <label></label>
+               
+            </div>
+        </div>
+    </div>
+  
+    <table class="table table-bordered table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>מספר הזמנה</th>
+                <th>לקוח</th>
+                <th>מספר רכב</th>
+                <th>מודל</th>
+                <th>מתאריך</th>
+                <th>עד תאריך</th>
+                <th>סניף</th>
+                <th>תאריך החזרה</th>
+                <th>לתשלום</th>
+                @if (User.IsInRole("Employee"))
+                {
+                    <th>סטטוס הזמנה</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr ng-repeat="order in oredersList">
+                <td>{{order.ID}}</td>
+                <td>{{order.User}}</td>
+                <td>{{order.Car}}</td>
+                <td>{{order.Model}}</td>
+                <td>{{order.From}}</td>
+                <td>{{order.To}}</td>
+                <td>{{order.Branch}}</td>
+                <td>{{order.Return}}</td>
+                <td>{{order.Price | currency:" ₪ "}}</td>
+
+                @if (User.IsInRole("Employee"))
+                {
+                    <td><a href="/Orders/Return/{{order.ID}}" ng-show="order.Return==messageIS">החזרת רכב</a>
+                        <span ng-show="order.Return!=messageIS">סגור</span></td>
+                }
+            </tr>
+
+        </tbody>
+
+
+    </table>
+</div>
+@section scripts{
+
+    <!--Angular-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--App-->
+    <script src="~/Scripts/Angular/Orders/App/ordersApp.js"></script>
+    <!--Controlle-->
+    <script src="~/Scripts/Angular/Orders/App/Controllers/ordersController.js"></script>
+    <!--Services-->
+    <script src="~/Scripts/Angular/Orders/App/Services/ordersService.js"></script>
+<link href="~/css/Cars/Index.css" rel="stylesheet" />
+
+
+}

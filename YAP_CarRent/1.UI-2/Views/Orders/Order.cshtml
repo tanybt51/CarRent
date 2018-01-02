@@ -1,0 +1,76 @@
+﻿@model _1.UI_2.Models.OrderVM
+
+@{
+    ViewBag.Title = "Order";
+}
+
+<h2>Order</h2>
+
+@using (Html.BeginForm("Create","Orders",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <input type="hidden" id="price" value="@Model.Price" />
+    <input type="hidden" name="_carNumber" id="car" value="@Model.Car" />
+    <input type="hidden" name="_branch" value="@Model.Branch" />
+   
+    <div class="form-horizontal">
+        <table>
+          
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>מספר רכב</th>
+                    <th>סניף</th>              
+                    <th>מתאריך</th>
+                    <th>עד תאריך</th>
+                    <th>לתשלום</th>
+                </tr>
+
+                <tr>
+                    <td><div><img src="~/Content/Images/Cars/@Model.Image" /></div></td>
+                    <td>@Model.Car</td>
+                    <td>@Model.Branch</td>
+
+                    <td><input type="date" id="dateFrom" name="_from" onchange="calc()" required/></td>
+                    <td><input type="date" id="dateTo" name="_to" onchange="calc()" required/></td>
+                    <td ><label id="priceLable"></label></td>
+               
+                 
+                </tr>
+
+            <tr>
+                <td><input type="submit" value="בצע" /></td>
+                <td>@Html.ActionLink("ביטול","Index", new { @class = "alert-warning" })</td>
+
+            </tr>
+        </table>
+        
+
+    </div>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts{
+<script src="~/Scripts/Jquery/Order/order.js"></script>
+ <style>
+     img{
+         height:100px;
+         width:auto;
+     }
+     th{
+         padding:4px;
+         color:red;
+         background-color:red;
+         font-weight:bold;
+         color:white; 
+     }
+     th,td{
+         border:solid black 2px;
+         text-align:center;
+     }
+    </style>  
+
+
+}

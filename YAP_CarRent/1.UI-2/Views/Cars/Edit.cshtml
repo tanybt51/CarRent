@@ -1,0 +1,91 @@
+﻿@model _1.UI_2.Models.EditCarVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container-fluid" ng-app="carsManagerApp" ng-controller="carsManagerCntroller">
+    <!-- Wrapper for slides -->
+
+    <form class="form-container right ya-font" action="/Cars/Edit" method="post">
+        @Html.AntiForgeryToken()
+        <label id="Invalid" class="ya-error">&nbsp;</label>
+        <table>
+            <tr>
+                <td>
+                    <div class="form-title">מודל</div>
+                    <label class="form-field">@Model.Car.Model</label>
+                    <input type="hidden" name="Model" value="@Model.Car.Model" />
+                    <input type="hidden" name="Serial" value="@Model.Car.Serial" />
+                    <input type="hidden" name="Kilometerage" value="@Model.Car.Kilometerage" />
+                    <input type="hidden" name="Gear" value="@Model.Car.Gear" />
+                    <input type="hidden" name="Group" value="@Model.Car.Group" />
+                </td>
+                <td>
+                    
+                    <input type="hidden" name="Image" value="@Model.Car.Image" />
+                    <img src="~/Content/Images/Cars/@Model.Car.Image" style="height:150px;width:auto" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-title">סניף</div>
+                    <input class="form-field" type="search" name="Branch" list="branchList" />
+                </td>
+                <td>
+                    <div class="form-title">סטטוס</div>
+                    <input class="form-field" type="search" name="Status" list="statusList" />
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    <div class="submit-container">
+                        <input class="submit-button form-control input-md" type="submit" value="שמור" />
+                        <a href="/Cars/Manage" class="warning form-control input-md">בטל</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <datalist id="branchList">
+            @foreach (var branch in Model.Branches)
+            {
+                <option>@branch.Text</option>
+            }
+        </datalist>
+        <datalist id="statusList">
+            @foreach (var status in Model.Statuses)
+            {
+                <option>@status.Text</option>
+            }
+        </datalist>
+
+
+
+
+    </form>
+
+
+
+
+
+
+</div>
+@section scripts{
+    <!--Angular-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--App-->
+    <script src="~/Scripts/Angular/CarsManager/App/carsManagerApp.js"></script>
+    <!--Controller-->
+    <script src="~/Scripts/Angular/CarsManager/App/Controllers/carsManagerCntroller.js"></script>
+    <!--Services-->
+    <script src="~/Scripts/Angular/CarsManager/App/Services/$carsManagerService.js"></script>
+    <!--App-->
+    <link href="~/css/Cars/Index.css" rel="stylesheet" />
+    <link href="~/css/Login/Register.css" rel="stylesheet" />
+}
+

@@ -1,0 +1,38 @@
+﻿.ya-background-slider{
+
+    background-color:black;
+
+    
+}
+.header .nav-item-child{
+    color:black!important;
+   
+}
+.navbar-nav-right li{
+    float:right;
+}
+.ya-left-title{
+   
+    
+
+}
+.ya-da{
+    font-size:46px;
+    color:darkblue;
+    font-family:'Guttman Hodes'
+}
+.ya-autoDa-font {
+    font-family: Broadway;
+}
+
+
+
+#p-left {
+    margin-left: 10%;
+}
+.ya-login-register{
+    margin-left:20px;
+}
+.container{
+    width:100%!important;
+}

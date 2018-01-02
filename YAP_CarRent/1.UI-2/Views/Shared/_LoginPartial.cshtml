@@ -1,0 +1,58 @@
+﻿
+@using _4.Entities
+@using _1.UI_2
+
+
+<div class="menu-container">
+    <ul class="navbar-nav navbar-left">
+        @if (Request.IsAuthenticated)
+        {
+            using (Html.BeginForm("LogOff", "Login", FormMethod.Post, new { id = "logoutForm", @class = "navbar-left" }))
+            {
+                @Html.AntiForgeryToken()
+                <li class="nav-item"><a href="javascript:document.getElementById('logoutForm').submit()" class="nav-item-child nav-item-hover">התנתק</a></li>
+
+            }
+        }
+        else
+        {@*<li><a href="/Login/Index" id="loginLink" class="nav-item-child nav-item-hover">כניסה</a></li>*@
+        using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "loginForm", @class = "ya-left" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <li class="nav-item margin-l-5"><a href="javascript:document.getElementById('loginForm').submit()" class="nav-item-child nav-item-hover">כניסה</a></li>
+
+        }
+        using (Html.BeginForm("Register", "Login", FormMethod.Post, new { id = "registerForm", @class = "ya-left" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+                <li class="nav-item margin-l-5"><a href="javascript:document.getElementById('registerForm').submit()" class="nav-item-child nav-item-hover">הרשמה</a></li>
+
+            }
+
+
+
+
+
+
+        }
+        @if (!Request.IsAuthenticated)
+        {
+        <li class="nav-item"><span class="nav-item-child">שלום אורח</span></li>
+        }
+        else
+        {
+            <li class="nav-item"><span class="nav-item-child">שלום @User.Identity.Name.Split('@')[0]</span></li>
+        }
+    </ul>
+</div>
+
+@section scripts{
+
+
+}
+
+

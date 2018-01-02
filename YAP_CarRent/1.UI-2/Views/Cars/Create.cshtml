@@ -1,0 +1,141 @@
+﻿@model _1.UI_2.Models.CreatCarVM
+@{
+    ViewBag.Title = "הוספת רכב";
+}
+
+<div class="container-fluid" ng-app="carsManagerApp" ng-controller="carsManagerCntroller">
+    <!-- Wrapper for slides -->
+
+    <div class="col-12">
+        <img class="img-responsive ya-img" src="~/Content/jeep8e.jpg">
+        <div class="container ya-center">
+            <div class="carousel-centered">
+                <h3>@ViewBag.Message</h3>
+                @*@Html.BeginForm("Create", "Cars", FormMethod.Post,, new { id = "createCarForm", @class = "" })*@
+                <h3 style="color:@ViewBag.resultColor">@ViewBag.result</h3>
+                <form action="/Cars/Create" enctype="multipart/form-data" method="post">
+                    <h1 class="ya-car-search">{{title}}</h1>
+                    @Html.AntiForgeryToken()
+                    <ul class="ya-ul navbar-nav-right">
+
+
+                        <li class="nav-item">
+                            <h2>סניף</h2>
+                            <input type="search" name="Branch" ng-model="currentBranch" placeholder="בחר סניף" list="branchesList" />
+                        </li>
+                        <li class="nav-item">
+                            <h2>יצרן</h2>
+                            <input type="search" ng-change="changeManufacturer()" ng-model="currentManufacturer" placeholder="בחר יצרן" list="manufacturerList" />
+                        </li>
+                        <li class="nav-item">
+                            <h2>דגם</h2>
+                            <input type="search" name="Model" ng-change="changeModel()" ng-model="currentModel" placeholder="בחר מודל" list="modelsList" />
+                        </li>
+                        <li class="nav-item">
+                            <h2>מספר לוחית</h2>
+                            <input type="number" name="Serial" ng-model="currentSerial" placeholder="מספר לוחית" />
+                        </li>
+                        <li class="nav-item">
+                            <h2>קילומטראג</h2>
+                            <input type="number" name="Kilometerage" ng-model="currentKm" placeholder="קילומטר" />
+                        </li>
+
+                        <li class="nav-item">
+                            <h2>גיר</h2>
+                            <input type="search" name="Gear" ng-model="currentGear" placeholder="גיר" list="gearList" />
+                        </li>
+                        <li class="nav-item">
+                            <h2>סטטוס</h2>
+                            <input type="search" name="Status" ng-model="currentStatus" placeholder="סטטוס" list="statusList" />
+                        </li>
+
+                        <li class="nav-item">
+                            <h2>תמונה</h2>
+                            <input type="file" title="תמונה" name="img" id="img" ng-model="currentImg" />
+                        </li>
+
+
+                        <li class="nav-item">
+
+                            <h2>&nbsp;</h2>
+                            <button ng-click="cleanSearch()" class="swiper-button-white">נקה חיפוש</button>
+                        </li>
+
+                        <li><input type="submit" value="צור" /><h2 style="cursor:pointer" ng-click="createCar()">בצע</h2></li>
+
+                    </ul>
+                </form>
+
+                <ul class="nav men"></ul>
+                <div class="col-md-2">
+
+
+                </div>
+                <datalist id="branchesList">
+                    @{foreach (var branch in Model.Branches)
+                        {
+                            <option data-id="@branch.Value">@branch.Text</option>
+                        }
+
+
+                    }
+                </datalist>
+                <datalist id="manufacturerList">
+                    @{foreach (var manufacturer in Model.Manufacturer)
+                        {
+                            <option data-id="@manufacturer.Value">@manufacturer.Text</option>
+                        }
+
+
+                    }
+
+                </datalist>
+                <datalist id="statusList">
+                    @{foreach (var status in Model.Status)
+                        {
+                            <option data-id="@status.Value" >@status.Text</option>
+                        }
+
+
+                    }
+
+                </datalist>
+                <datalist id="gearList">
+                    @{foreach (var gear in Model.Gear)
+                        {
+                            <option data-id="@gear.Value">@gear.Text</option>
+                        }
+
+
+                    }
+
+                </datalist>
+                <datalist id="modelsList">
+                    <option ng-repeat="m in modelList" data-id="{{m.value}}">{{m.Text}}</option>
+
+                </datalist>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+@section scripts{
+    <!--Angular-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--App-->
+    <script src="~/Scripts/Angular/CarsManager/App/carsManagerApp.js"></script>
+    <!--Controller-->
+    <script src="~/Scripts/Angular/CarsManager/App/Controllers/carsManagerCntroller.js"></script>
+    <!--Services-->
+    <script src="~/Scripts/Angular/CarsManager/App/Services/$carsManagerService.js"></script>
+    <!--App-->
+    <link href="~/css/Cars/Index.css" rel="stylesheet" />
+}

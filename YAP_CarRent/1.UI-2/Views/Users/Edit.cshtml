@@ -1,0 +1,211 @@
+﻿@model _1.UI_2.Models.EditUserVM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<span class="ya-header">Edit</span>
+
+@using (Html.BeginForm("Edit", "Users", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <p id="Invalid" class="ya-error"></p>
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <table>
+
+            <tr>
+                <td>
+                    <div class="h4">שם</div>
+                    <input class="form-field" type="text" onblur="InvalidName(this)" value="@Model.User.FirstName" oninvalid="InvalidMail(this);" required placeholder="שם" id="inputFName" title="שם פרטי" name="FirstName" />
+                    <input  type="hidden" name="ID" value="@Model.User.ID"/>
+                </td>
+                <td>
+                    <div class="h4">משפחה</div>
+                    <input class="form-field" type="text" onblur="InvalidName(this)" value="@Model.User.LastName" oninvalid="InvalidMail(this);" required placeholder="משפחה" id="inputLName" title="שם משפחה" name="LastName" />
+                </td>
+                <td>
+                    <div class="h4">תעודת זהות</div>
+                    <input class="form-field" type="hidden" onblur="validTZ(this)" value="@Model.User.TZ" oninvalid="InvalidMail(this);" required placeholder="תעודת זהות" id="inputTZ" title="תעודת זהות" name="TZ" />
+                    <label class="form-field">@Model.User.TZ</label>
+              
+                  </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="h4">תאריך לידה</div>
+                    <input class="form-field" type="date" id="inputBirthday" value="@(((DateTime)Model.User.Birthday).ToString("yyyy-MM-dd"))" title="תאריך לידה" name="Birthday" />
+                </td>
+                <td>
+
+                    <div class="h4">דואר אלקטרוני</div>
+                    <label class="form-field">@Model.User.Email</label>
+                    <input type="hidden" name="Email" value="@Model.User.Email" />
+                    <input  type="hidden" name="LastEntryDTime" value="@Model.User.LastEntryDTime" />
+                 </td>
+                <td>
+                    @{
+                        if (Model.User.Gender == "M")
+                        {
+                            <div>
+                                <span class="ya-header">M</span>
+                                <input type="radio" name="Gender" value="M" checked />
+                            </div>
+                            <div>
+                                <span class="ya-header">F&nbsp;</span>
+                                <input type="radio" name="Gender" value="F" />
+                            </div>
+
+                        }
+                        else
+                        {
+                            <input type="radio" name="Gender" value="M" />
+                            <input type="radio" name="Gender" value="F" checked />
+                        }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="h4">סיסמה</div>
+                    <input class="form-field" type="text" value="@Model.User.Password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword1" placeholder="******" name="Password" />
+                </td>
+                <td>
+                    <div class="h4">הרשאות</div>
+                    <label id="userRoles" class="form-field" >@Model.User.UserRoles</label>
+                    <input id="userRoles1" type="hidden"name="UserRoles" value="@Model.User.UserRoles" />
+                </td>
+                <td>
+                    <div>
+                        <select id="roles">
+                            @foreach (var role in Model.Roles2)
+                            {
+                                <option>@role.Name</option>
+                            }
+                        </select>
+                        <a onclick="addRole()" class="alert-success">הוסף</a>
+                        <a onclick="removeRole()" class="alert-danger">הסר</a>
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+
+
+
+
+
+
+
+
+
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.User.ID)
+
+
+
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+                        }
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+
+
+    <link href="~/css/Users/Edit.css" rel="stylesheet" />
+    <script src="~/Scripts/Jquery/Login/Validations/validations.js"></script>
+    <script src="~/Scripts/Jquery/Login/Validations/roles.js"></script>
+}
+
+
+@*<table>
+        <tr>
+            <td><span class="ya-header">שם פרטי</span></td>
+            <td><input type="text" id="inputFName" name="FirstName" value="@Model.User.FirstName" /></td>
+            <td><span class="ya-header">שם משפחה</span></td>
+            <td><input type="text" id="inputLName" name="LastName" value="@Model.User.LastName" /></td>
+        </tr>
+        <tr>
+            <td><span class="ya-header">תעודת זהות</span></td>
+            <td><input type="number" name="TZ" value="@Model.User.TZ" /></td>
+            <td><span class="ya-header">תאריך לידה</span></td>
+            <td><input type="datetime" name="Birthday" value="@Model.User.Birthday" /></td>
+        </tr>
+        <tr>
+            <td><span class="ya-header">מין</span></td>
+            <td>
+                @{
+                    if (Model.User.Gender == "M")
+                    {
+                        <div>
+                            <span class="ya-header">M</span>
+                            <input type="radio" name="Gender" value="M" checked />
+                        </div>
+                        <div>
+                            <span class="ya-header">F&nbsp;</span>
+                            <input type="radio" name="Gender" value="F" />
+                        </div>
+
+                    }
+                    else
+                    {
+                        <input type="radio" name="Gender" value="M" />
+                        <input type="radio" name="Gender" value="F" checked />
+                    }
+                }
+            </td>
+            <td><span class="ya-header">דוא"ל</span></td>
+            <td><input type="email" name="Email" value="@Model.User.Email" /></td>
+
+        </tr>
+        <tr>
+            <td><span class="ya-header">סיסמה</span></td>
+            <td><input type="text" name="Password" value="@Model.User.Password" /></td>
+            <td><span class="ya-header">תמונה</span></td>
+            <td><input type="text" name="Image" value="@Model.User.Image" /></td>
+        </tr>
+        <tr>
+            <td><span class="ya-header">תעודת זהות</span></td>
+            <td><input type="number" name="TZ" value="@Model.User.TZ" /></td>
+            <td><span class="ya-header">תאריך לידה</span></td>
+            <td><input type="date" name="Birthday" value="@Model.User.Birthday.Value" /></td>
+        </tr>
+        <tr>
+            <td><span class="ya-header">תפקידים קיימים</span></td>
+            <td>
+                <select name="Role">
+                    @foreach (var role in Model.Roles1)
+                    {
+
+                        <option value="@role.ID">@role.Name</option>
+
+                    }
+
+                </select>
+            </td>
+            <td><span class="ya-header">הוספת תפקיד</span></td>
+            <td>
+                <select name="Role">
+                    @foreach (var role in Model.Roles2)
+                    {
+
+                        <option value="@role.ID">@role.Name</option>
+
+                    }
+
+                </select>
+            </td>
+        </tr>
+    </table>*@

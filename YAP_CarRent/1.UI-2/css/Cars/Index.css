@@ -1,0 +1,36 @@
+﻿.ya-ul {
+    list-style-type: none;
+    direction: rtl;
+
+    
+}
+
+h2,.ya-car-search {
+    color: white;
+    font-family: Calibri;
+    /*text-shadow:1px 1px 100px #808080!important;*/
+    text-shadow: -2px -2px 11px #000000, -2px -1px 11px #000000, -2px 0px 11px #000000, -2px 1px 11px #000000, -2px 2px 11px #000000, -1px -2px 11px #000000, -1px -1px 11px #000000, -1px 0px 11px #000000, -1px 1px 11px #000000, -1px 2px 11px #000000, 0px -2px 11px #000000, 0px -1px 11px #000000, 0px 1px 11px #000000, 0px 2px 11px #000000, 1px -2px 11px #000000, 1px -1px 11px #000000, 1px 0px 11px #000000, 1px 1px 11px #000000, 1px 2px 11px #000000, 2px -2px 11px #000000, 2px -1px 11px #000000, 2px 0px 11px #000000, 2px 1px 11px #000000, 2px 2px 11px #000000;
+        opacity: 1;
+    width:auto;
+    text-align:center;
+}
+
+.ya-img {
+     opacity: 1.5;
+}
+
+input {
+    margin: 3px;
+    width:130px;
+}
+.ya-center{
+    margin-left:auto;
+    
+}
+.ya-top30{
+    top:30%!important;
+}
+.ya-car-size{
+    width:500px;
+    height:300px;
+}

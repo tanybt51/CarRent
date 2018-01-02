@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "התחברות למערכת";
+}
+
+
+<div class="container col-xs-12" ng-app="loginApp" ng-controller="loginController" ng-init="modelEmail='@ViewBag.email'">
+    <h2 class="h2">התחברות למערכת</h2>
+
+
+    <form class="form-container col-lg-5 ya-font" action="/Login/RegisterNewUser" method="post">
+        @Html.AntiForgeryToken()
+        <label id="Invalid" class="ya-error"></label>
+        <div class="h4">שם</div>
+        <input class="form-field" type="text" onblur="InvalidName(this)" oninvalid="InvalidMail(this);" required placeholder="שם" id="inputFName" title="שם פרטי" name="FirstName" />
+
+        <div class="h4">משפחה</div>
+        <input class="form-field" type="text" onblur="InvalidName(this)" oninvalid="InvalidMail(this);" required placeholder="משפחה" id="inputLName" title="שם משפחה" name="LastName" />
+
+        <div class="h4">תעודת זהות</div>
+        <input class="form-field" type="number" onblur="validTZ(this)" oninvalid="InvalidMail(this);" required placeholder="תעודת זהות" id="inputTZ" title="תעודת זהות" name="TZ" />
+        <div class="h4">תאריך לידה</div>
+        <input class="form-field" type="date"  id="inputBirthday" title="תאריך לידה" name="Birthday" />
+
+        <div class="h4">דואר אלקטרוני</div>
+        <input class="form-field" type="email" onblur="validEmail(this);" oninvalid="InvalidMail(this);" id="inputEmail" title="דוא''ל" name="Email" />
+
+
+        <div>
+            <input class="form-field" type="radio" name="Gender" value="M"> זכר
+            <input class="form-field" type="radio" name="Gender" value="F"> נקבה
+        </div>
+
+        <div class="h4">סיסמה</div>
+        <input class="form-field" type="password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword1" placeholder="******" name="Password" />
+        <div class="h4">חזור על הסיסמה</div>
+        <input class="form-field" type="password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword2" placeholder="******" />
+
+        <div class="col-sm-12">
+
+            <div class="submit-container">
+                <input class="submit-button" type="submit" value="כניסה" />
+            </div>
+
+        </div>
+
+
+    </form>
+
+
+</div>
+<br />
+<script>
+
+
+</script>
+
+@section scripts{
+
+
+
+    <script src="~/Scripts/Jquery/Login//Validations/login.js"></script>
+
+    <script src="~/Scripts/Jquery/Login/Validations/validations.js"></script>
+
+    <link href="~/css/Login/Index.css" rel="stylesheet" />
+    <!-- Angular datepicker -->
+
+
+}
+
+
+

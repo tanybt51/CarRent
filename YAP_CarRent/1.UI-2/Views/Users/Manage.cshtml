@@ -1,0 +1,168 @@
+﻿
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div ng-app="usersManagerApp" ng-controller="usersManagerController">
+
+    <h1>{{title}}</h1>
+    <table class="table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                <span>ערוך</span>
+            </th>
+            <th>
+                <span>שם פרטי</span>
+            </th>
+            <th>
+                <span>שם משפחה</span>
+
+            </th>
+            <th>
+                <span>תעודת זהות</span>
+
+            </th>
+            <th>
+                <span>תאריך לידה</span>
+
+            </th>
+            <th>
+                <span>מין</span>
+
+            </th>
+            <th>
+                <span>דוא"ל</span>
+
+            </th>
+            <th>
+                <span>סיסמה</span>
+
+            </th>
+            <th>
+                <span>הרשאה</span>
+            </th>
+            <th>
+                <span>תמונה</span>
+            </th>
+            <th>
+                <span>כניסה אחרונה</span>
+
+            </th>
+            <th></th>
+        </tr>
+
+
+
+        <tr ng-repeat="user in userList">
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>
+                {{user.FirstName}}
+            </td>
+            <td>
+                {{user.LastName}}
+            </td>
+            <td>
+                {{user.TZ}}
+            </td>
+            <td>
+                {{datePars(user.Birthday)}}
+            </td>
+            <td>
+                {{user.Gender}}
+            </td>
+            <td>
+                {{user.Email}}
+            </td>
+            <td>
+                {{user.Password}}
+            </td>
+            <td>
+                <label>{{user.UserRoles}}</label>
+            </td>
+            <td>
+                {{user.Image}}
+            </td>
+            <td>
+                {{datePars(user.LastEntryDTime)}}
+            </td>
+
+            <td>
+                <a class="swiper-button-black" href="/Users/Edit?ID={{user.ID}}">ערוך</a>
+            </td>
+        </tr>
+
+
+    </table>
+    <div>
+        <div>
+            <div class="container">
+                <div class="text-center">
+
+
+                    <!-- items being paged -->
+                    <div ng-repeat="item in vm.items">Item {{item}}</div>
+
+                    <!-- pager -->
+                    <ul ng-if="vm.pager.pages.length" class="pagination">
+                        <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                            <a ng-click="vm.setPage(1)">First</a>
+                        </li>
+                        <li ng-class="{disabled:vm.pager.currentPage === 1}">
+                            <a ng-click="vm.setPage(vm.pager.currentPage - 1)">Previous</a>
+                        </li>
+                        <li ng-repeat="page in vm.pager.pages" ng-class="{active:vm.pager.currentPage === page}">
+                            <a ng-click="vm.setPage(page)">{{page}}</a>
+                        </li>
+                        <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                            <a ng-click="vm.setPage(vm.pager.currentPage + 1)">Next</a>
+                        </li>
+                        <li ng-class="{disabled:vm.pager.currentPage === vm.pager.totalPages}">
+                            <a ng-click="vm.setPage(vm.pager.totalPages)">Last</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <div class="credits text-center">
+                <p>
+                    <a href="http://jasonwatmore.com/post/2016/01/31/AngularJS-Pagination-Example-with-Logic-like-Google.aspx" target="_top">AngularJS - Pagination Example with logic like Google</a>
+                </p>
+                <p>
+                    <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    a {
+        cursor: pointer;
+    }
+</style>
+@section scripts{
+
+    <link href="~/css/Users/Manage.css" rel="stylesheet" />
+    <!--Angular-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <!--App-->
+    <script src="~/Scripts/Angular/UsersManager/App/usersManagerApp.js"></script>
+    <!--Controller-->
+    <script src="~/Scripts/Angular/UsersManager/App/Controllers/usersManagerCntroller.js"></script>
+    <!--Service-->
+    <script src="~/Scripts/Angular/UsersManager/App/Services/$usersManagerService.js"></script>
+
+    <!--App-->
+    <script src="~/Scripts/Angular/Paging/pagingApp.js"></script>
+    <!--Controller-->
+    <script src="~/Scripts/Angular/Paging/Controllers/pagingCntroller.js"></script>
+    <!--Service-->
+    <script src="~/Scripts/Angular/Paging/Services/pagingService.js"></script>
+}

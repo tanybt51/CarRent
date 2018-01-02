@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "התחברות למערכת";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<form class="form-container right ya-font" action="/Login/RegisterNewUser" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-title"><h2>הרשמה</h2></div>
+    <label id="Invalid" class="ya-error">&nbsp;</label>
+    <table>
+        <tr>
+            <td>
+                <div class="form-title">שם</div>
+                <input required type="text" placeholder="שם" id="inputFName" title="שם פרטי" name="FirstName" class="form-field">
+            </td>
+            <td>
+                <div class="form-title">משפחה</div>
+                <input required type="text" placeholder="שם" id="inputFName" title="שם משפחה" name="LastName" class="form-field">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="form-title">תעודת זהות</div>
+                <input class="form-field" type="number" onblur="validTZ(this)" oninvalid="InvalidMail(this);" required placeholder="תעודת זהות" id="inputTZ" title="תעודת זהות" name="TZ" />
+            </td>
+            <td>
+                <div class="form-title">תאריך לידה</div>
+                <input class="form-field" required type="date" id="inputBirthday" title="תאריך לידה" name="Birthday" />
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="form-title">דואר אלקטרוני</div>
+
+                <input class="form-field" type="email" onblur="validEmail(this);" oninvalid="InvalidMail(this);" id="inputEmail" title="דוא''ל" name="Email" />
+            </td>
+            <td>
+                <div class="form-title">מין</div>
+                <input class="col-1" type="radio" name="Gender" value="M"> <span class="form-title">זכר</span>
+                <input class="col-1" type="radio" name="Gender" value="F"> <span class="form-title">נקבה</span>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="form-title">סיסמה</div>
+                <input class="form-field" type="password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword1" placeholder="******" name="Password" />
+            </td>
+            <td>
+                <div class="form-title">חזור על הסיסמה</div>
+                <input class="form-field" type="password" oninvalid="InvalidPass(this);" required title="סיסמה" id="inputPassword2" placeholder="******" />
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <div class="submit-container">
+                    <input class="submit-button form-control input-md" type="submit" value="כניסה" />
+                </div>
+            </td>
+        </tr>
+    </table>
+  
+
+
+
+
+</form>
+
+<script>
+
+
+</script>
+
+@section scripts{
+
+
+
+    <script src="~/Scripts/Jquery/Login//Validations/login.js"></script>
+
+    <script src="~/Scripts/Jquery/Login/Validations/validations.js"></script>
+
+    <link href="~/css/Login/Index.css" rel="stylesheet" />
+    <link href="~/css/Login/Register.css" rel="stylesheet" />
+    <!-- Angular datepicker -->
+
+
+}
+
+
+

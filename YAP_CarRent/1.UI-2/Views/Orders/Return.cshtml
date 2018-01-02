@@ -1,0 +1,127 @@
+﻿
+@using _1.UI_2.Models
+@model OrderVM
+@{
+    ViewBag.Title = "Return";
+}
+
+<h2>Return</h2>
+<form class="form-container right ya-font" action="/Orders/CloseOrder" method="post" style="min-width:700px" ng-app="">
+    @Html.AntiForgeryToken()
+    <label id="Invalid" class="ya-error">&nbsp;</label>
+    <input type="hidden" name="id" value="@Model.ID" />
+    <input type="hidden" name="_returnDate" value="@Model.Return"/>
+    <table>
+        <tr>
+            <td>
+                <div class="form-title">לקוח</div>
+                <label class="form-field">@Model.User</label>
+            </td>
+            <td>
+                <div class="form-title">מספר רכב</div>
+                <label class="form-field">@Model.Car</label>
+            </td>
+            <td>
+    
+                <img src="~/Content/Images/Cars/@Model.Image" style="height:100px;width:auto"/>
+            </td>
+           
+        </tr>
+     <tr>
+         <td>
+             <div class="form-title">תאריך התחלה</div>
+             <label class="form-field">@Model.From</label>
+         </td>
+         <td>
+             <div class="form-title">תאריך סיום</div>
+             <label class="form-field">@Model.From</label>
+         </td>
+         <td>
+             <div class="form-title">תאריך סיום בפועל</div>
+             <label class="form-field">@Model.Return</label>
+         </td>
+     </tr>
+        <tr>
+            <td>
+                <div class="form-title">מחיר</div>
+                <label class="form-field">{{@Model.Price|currency: '₪'}}</label>
+            </td>
+            <td>
+                <div class="form-title">תשלום על עיכוב</div>
+                <label class="form-field">{{@Model.Fine|currency: '₪'}}</label>
+            </td>
+            <td>
+                <div class="form-title">סה"כ</div>
+                <label class="form-field">{{@Model.Payment|currency: '₪'}}</label>
+            </td>
+        </tr>
+        <tr class="tr">
+            <td>
+                       <span class="form-title">בדיקה</span>
+                 
+          
+            </td>
+            <td>
+                <span>תקין</span>
+            </td>
+            <tr>
+                <td><br /></td>
+        </tr>
+        <tr  class="tr">
+            <td >
+                <span >נזקי פח</span>
+              
+
+            </td>
+            <td>
+                <input type="checkbox" value="pah"/>
+            </td>
+           
+
+        </tr>
+        <tr>
+            <td><br /></td>
+        </tr>
+        <tr  class="tr">
+            <td>
+                <span >מיכל מלא</span>
+
+
+            </td>
+            <td>
+                <input type="checkbox" value="tank" />
+            </td>
+        </tr>
+        <tr>
+            <td><br /></td>
+        </tr>   
+        <tr  class="tr">
+            <td>
+                <span >נקיון כללי</span>
+
+
+            </td>
+            <td>
+                <input type="checkbox" value="clean" />
+            </td>
+        </tr>
+    </table>
+
+
+
+    <input type="submit" value="סיום"/>
+
+</form>
+@section scripts{
+    <style>
+.form-field{
+    width:178px!important;
+}
+    .tr{
+        padding:4px;
+    }
+    </style>
+<link href="~/css/Login/Register.css" rel="stylesheet" />
+<script src="~/Scripts/angular.min.js"></script>
+    
+    }

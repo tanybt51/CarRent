@@ -1,0 +1,49 @@
+﻿@using _4.Entities
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <p>"שלום @ViewBag.User.FirstName"</p>
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">התנתק</a></li>
+        </ul>
+    }
+}
+else
+{
+    using (Html.BeginForm("Index", "Login", FormMethod.Get, new { id = "loginForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+      
+    }
+    <form action="/Login/Index" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li><input type="submit" class="nav-item-child nav-item-hover" value="כניסה"/></li>
+        </ul>
+
+    </form>
+    using (Html.BeginForm("Register", "Login", FormMethod.Get, new { id = "registerForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            @*<li><a href="/Login/Register" id="registerLink" class="nav-item-child nav-item-hover">הרשמה</a></li>*@
+            <li><a href="javascript:document.getElementById('registerForm').submit()" class="nav-item-child nav-item-hover">הרשמה</a></li>
+        </ul>
+    }
+
+
+
+
+
+    @*<li>@Html.ActionLink("הירשם", "Register", "Login", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("התחבר", "Login", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+
+}

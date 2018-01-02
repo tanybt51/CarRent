@@ -1,0 +1,13 @@
+﻿.ya-header{
+    font-family:Calibri;
+    
+}
+th{
+    text-align:center;
+
+  
+}
+td,th{
+     padding:3px;
+     cursor:pointer;
+}

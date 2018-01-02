@@ -1,0 +1,14 @@
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\5.TestUI.exe.config
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\5.TestUI.exe
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\5.TestUI.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\obj\Debug\5.TestUI.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\obj\Debug\5.TestUI.exe
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\obj\Debug\5.TestUI.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\2.BL.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\4.Entities.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\3.DAL.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\EntityFramework.dll
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\2.BL.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\4.Entities.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\3.DAL.pdb
+C:\Users\User\Documents\ג'ון ברייס\MVC\YAP_CarRent\5.TestUI\bin\Debug\EntityFramework.xml
